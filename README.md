@@ -3,7 +3,7 @@
 
 This project is a Node.js/TypeScript implementation of a resilient email sending service designed to handle provider failures gracefully. It includes features like automatic retries with exponential backoff, fallback to a secondary provider, idempotency, rate limiting, and status tracking.
 
-**Live Demo URL:** [Your Render URL Will Go Here After Deployment]
+**Live Demo URL:**(https://resilient-email-service-lu49.onrender.com)
 
 ---
 
