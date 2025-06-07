@@ -2,6 +2,7 @@
 
 import { IEmailProvider, EmailPayload } from '../interfaces/IEmailProvider';
 import { v4 as uuidv4 } from 'uuid';
+import { CircuitBreaker } from './CircuitBreaker';
 
 type EmailStatus = 'pending' | 'sent' | 'failed';
 
@@ -29,7 +30,8 @@ export class EmailService {
     if (!providers || providers.length === 0) {
       throw new Error('EmailService requires at least one provider.');
     }
-    this.providers = providers;
+     // Wrap each provider in a CircuitBreaker
+    this.providers = providers.map(p => new CircuitBreaker(p));
   }
 
   // Utility function for adding delay (Exponential Backoff)
